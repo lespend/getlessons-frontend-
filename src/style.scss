@@ -1,0 +1,347 @@
+// Переменные
+$title-color: #222222;
+$text-color: #535353;
+$primary-color: #4e26df;
+
+
+
+// Сброс стилей
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+// Шрифт на всей странице
+body {
+    font-family: 'Nunito', 'Arial', sans-serif;
+}
+
+
+
+/* Базовые классы */
+.container {
+    max-width: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.primary-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: $title-color;
+}
+
+.primary-desc {
+    font-size: 16px;
+    color: $text-color;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6)
+}
+
+.button {
+    display: block;
+    border: none;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    text-align: center; 
+    background: #312b2b;
+    color: #ffffff;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: background ease 500ms,
+                box-shadow ease 300ms,
+                color ease 200ms;
+
+    &:hover {
+        background: #ffffff;
+        color: $title-color;
+        box-shadow: 0px 0px 16px -2px rgba(#000000, 0.35);
+    }
+}
+
+
+
+/* Шапка главной страницы */
+.main-header {
+    position: relative;
+
+    .project-logotype {
+        display: block;
+        width: 140px;
+        margin: 15px auto;
+    }
+
+    .header-navigation {
+        .navigation-button-menu {
+            margin-top: -5px;
+            font-size: 36px;
+            color: $title-color;
+            background: none;
+            border: none;
+            outline: none;
+            transition: color ease 500ms;
+        }
+
+        &__button {
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+
+        &__list {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            list-style: none;
+            overflow-y: scroll;
+            z-index: 20;
+            transform: translateX(-100vw);
+            transition: transform ease-in-out 500ms;
+        }
+
+        &__link {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid #b1b1b1;
+            font-size: 20px;
+            color: $title-color;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        // Модификатор show отвечает за показ меню
+        &--show {
+            .header-navigation__list {
+                transform: translateX(0);
+            }
+
+            .navigation-button-menu {
+                position: fixed;
+                top: 10px;
+                left: 265px;
+                color: #ffffff;
+                z-index: 20;
+            }
+        }
+    }
+}
+
+
+
+/* Блок Intro */
+.page-intro {
+    &__preview-image {
+        width: 100%;
+        height: 40vh;
+        background: url("images/intro-preview.jpg") no-repeat center center;
+        background-size: cover;
+    }
+
+    &__title {
+        margin-top: 25px;
+    }
+
+    &__desc {
+        margin-top: 10px;
+    }
+}
+
+
+/* Блок Courses */
+.courses {
+    margin-top: 50px;
+}
+
+.courses__block {
+    margin-top: 30px;
+}
+
+.courses__button {
+    margin-top: 50px;
+}
+
+.block-course {
+    padding: 15px;
+    list-style-type: none;
+    min-height: 140px;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+    background: #a2a0f5;
+    background-image: linear-gradient(to top right, #4c49ea, #4c49ea 30%, #fff 70%, #fff);
+    background-position: top right;
+    background-size: 500% 500%;
+    transition: background-position ease-in-out 300ms;
+
+    &:hover {
+        background-position: right bottom;
+
+        .block-course__title,
+        .block-course__start {
+            color: #fff;
+        }
+    }
+
+    &__title,
+    &__start {
+        transition: color ease-in-out 300ms;
+    }    
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    &__title {
+        font-size: 32px;
+        color: #222222;
+    }
+
+    &__start {
+        display: block;
+        font-size: 16px;
+        margin-top: 10px;
+        color: #535353;
+    }
+}
+
+
+
+
+
+/* Подвал главной страницы */
+.main-footer {
+    padding-top: 10px;
+    margin-top: 300px;
+    min-height: 30px;
+    background: #4e26df;
+    font-size: 20px;
+
+    i {
+        color: rgba(255, 255, 255, 0.6);
+        transition: color ease 500ms;
+    }
+}
+
+.social-navigation {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+
+    li {
+        margin-left: 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    &__link {
+        display: inline-block;
+
+        &:hover i {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 748px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .page-intro {
+        &__preview-image {
+            height: 60vh;
+        }
+    
+        &__title {
+            text-align: center;
+            font-size: 36px;
+        }
+    
+        &__desc {
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+
+    .courses-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .courses {
+        &__button {
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .courses__block {
+        max-width: 200px;
+    }
+
+    .main-header {
+        .header-navigation {
+            // Модификатор show отвечает за показ меню
+            &--show {
+                .header-navigation__list {
+                    width: 440px;
+                }
+
+                .navigation-button-menu {
+                    left: 460px;
+                }
+            }
+
+            &__link {
+                font-size: 28px;
+            }
+
+            &__button {
+                left: auto;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        max-width: 1004px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .courses__block {
+        max-width: 290px;
+    }
+
+    .page-intro__preview-image {
+        height: 70vh;
+        background: url("images/intro-preview-hq.jpg") no-repeat center center;
+        background-size: cover;
+    }
+}
